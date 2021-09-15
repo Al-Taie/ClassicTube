@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.classictube.R
+import com.example.classictube.databinding.ItemVideoBinding
+import com.example.classictube.interfaces.VideoInteractionListener
 
-class VideoAdapter(private val list: List<String>):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
+class VideoAdapter(private val list: List<String>, private val listener: VideoInteractionListener):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
 
 
@@ -17,14 +19,13 @@ class VideoAdapter(private val list: List<String>):RecyclerView.Adapter<VideoAda
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
+
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = list.size
 
     class VideoViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem) {
-       // val binding = ItemGameBinding.bind(viewItem)
+       val binding = ItemVideoBinding.bind(viewItem)
     }
 }
