@@ -3,6 +3,7 @@ package com.example.classictube
 import android.content.Intent
 import android.view.LayoutInflater
 import com.example.classictube.base.BaseActivity
+import com.example.classictube.data.NetWork
 import com.example.classictube.databinding.ActivityMainBinding
 import com.example.classictube.interfaces.VideoInteractionListener
 
@@ -12,7 +13,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), VideoInteractionListen
         get() = R.style.Theme_ClassicTube
 
     override fun setup() {
-
+        NetWork.makeRequestUsingOkhttp()
     }
 
     override fun callBack() {
