@@ -8,7 +8,7 @@ import com.example.classictube.R
 import com.example.classictube.databinding.ItemVideoBinding
 import com.example.classictube.interfaces.VideoInteractionListener
 
-class VideoAdapter(private val list: List<String>, private val listener: VideoInteractionListener):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
+class VideoAdapter(private val list: List<String>?, private val listener: VideoInteractionListener?):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
 
 
@@ -19,11 +19,20 @@ class VideoAdapter(private val list: List<String>, private val listener: VideoIn
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
+        holder.binding.apply {
+            titleText.text = "The Walking Dead"
+            directorText.text = "Joan Miller"
+            durationText.text = "1:24:55"
+//            imageView.background = ""
+            itemCard.setOnClickListener { getVideoActivity(position) }
+        }
+    }
 
+    private fun getVideoActivity(position: Int) {
 
     }
 
-    override fun getItemCount() = list.size
+    override fun getItemCount() = 5
 
     class VideoViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem) {
        val binding = ItemVideoBinding.bind(viewItem)

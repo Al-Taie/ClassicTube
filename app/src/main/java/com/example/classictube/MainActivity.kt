@@ -6,6 +6,7 @@ import com.example.classictube.base.BaseActivity
 import com.example.classictube.data.NetWork
 import com.example.classictube.databinding.ActivityMainBinding
 import com.example.classictube.interfaces.VideoInteractionListener
+import com.example.classictube.video.VideoAdapter
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), VideoInteractionListener {
 
@@ -14,6 +15,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), VideoInteractionListen
 
     override fun setup() {
         NetWork.makeRequestUsingOkhttp()
+        val adapter = VideoAdapter(null,null)
+        binding.recycleView.adapter = adapter
     }
 
     override fun callBack() {
