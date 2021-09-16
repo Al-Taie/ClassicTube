@@ -1,14 +1,17 @@
 package com.example.classictube.video
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.classictube.R
+import com.example.classictube.data.domain.Item
 import com.example.classictube.databinding.ItemVideoBinding
 import com.example.classictube.interfaces.VideoInteractionListener
 
-class VideoAdapter(private val list: List<String>?, private val listener: VideoInteractionListener?):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
+class VideoAdapter(private val list: List<Item>, private val listener: VideoInteractionListener):RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
 
 
@@ -19,12 +22,14 @@ class VideoAdapter(private val list: List<String>?, private val listener: VideoI
     }
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
+        val currentItem = list[position]
         holder.binding.apply {
-            titleText.text = "The Walking Dead"
-            directorText.text = "Joan Miller"
-            durationText.text = "1:24:55"
-//            imageView.background = ""
-            itemCard.setOnClickListener { getVideoActivity(position) }
+            titleText.text = currentItem.title
+            directorText.text = currentItem.director
+            Glide.with(imageView).load(currentItem.art).into(imageView)
+            durationText.text = "${currentItem.duration/60}:00"
+            root.setOnClickListener { listener.videoPressed(currentItem.url) }
+
         }
     }
 
@@ -32,7 +37,7 @@ class VideoAdapter(private val list: List<String>?, private val listener: VideoI
 
     }
 
-    override fun getItemCount() = 5
+    override fun getItemCount() = list.size
 
     class VideoViewHolder(viewItem: View) : RecyclerView.ViewHolder(viewItem) {
        val binding = ItemVideoBinding.bind(viewItem)

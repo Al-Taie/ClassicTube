@@ -1,6 +1,7 @@
 package com.example.classictube.data
 
 import android.util.Log
+import com.example.classictube.data.domain.Item
 import com.example.classictube.data.domain.VideoData
 import com.google.gson.Gson
 import okhttp3.*
@@ -9,6 +10,7 @@ import java.io.IOException
 object NetWork {
     private val client = OkHttpClient()
     private val gson = Gson()
+    var itemsList = listOf<Item>()
     fun makeRequestUsingOkhttp(){
         val request =
             Request.Builder().
@@ -21,8 +23,11 @@ object NetWork {
                     val result = gson.fromJson(jsonString, VideoData::class.java)
                     val test = result.feed.joinToString { it.id }
                     Log.i("NETWORK",test)
+                    itemsList = result.feed[0].items
+
                 }
             }
         })
     }
+
 }
