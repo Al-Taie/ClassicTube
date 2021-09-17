@@ -11,18 +11,20 @@ object NetWork {
     private val client = OkHttpClient()
     private val gson = Gson()
     var itemsList = listOf<Item>()
-    fun makeRequestUsingOkhttp(){
+    fun makeRequestUsingOkhttp() {
         val request =
-            Request.Builder().
-            url("https://raw.githubusercontent.com/Bareq-altaamah/mock/main/classic.json").build()
+            Request.Builder()
+                .url("https://raw.githubusercontent.com/Bareq-altaamah/mock/main/classic.json")
+                .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
             }
+
             override fun onResponse(call: Call, response: Response) {
                 response.body?.string()?.let { jsonString ->
                     val result = gson.fromJson(jsonString, VideoData::class.java)
                     val test = result.feed.joinToString { it.id }
-                    Log.i("NETWORK",test)
+                    Log.i("NETWORK", test)
                     itemsList = result.feed[0].items
 
                 }

@@ -1,62 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="22dp"
+    android:id="@+id/item_card"
+    style="@style/CardTheme"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
     android:layout_marginHorizontal="8dp"
     android:layout_marginTop="8dp"
     android:padding="8dp"
-    android:backgroundTint="@color/black"
-    android:layout_width="match_parent"
-    android:layout_height="260dp"
-    android:id="@+id/item_card">
+    app:cardCornerRadius="22dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_play"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="4dp"
+            android:scaleType="center"
+            android:src="@drawable/exo_controls_play"
+            app:layout_constraintBottom_toTopOf="@id/title_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/title_text"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
+
         <TextView
             android:id="@+id/duration_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="24:58"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"
             android:layout_margin="16dp"
             android:background="@drawable/text_background"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            tools:text="24:58" />
+
         <TextView
             android:id="@+id/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Le Voyage Dans la Lun"
-            app:layout_constraintBottom_toTopOf="@id/director_text"
+            android:layout_marginStart="8dp"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/white"/>
+            app:layout_constraintBottom_toTopOf="@id/director_text"
+            tools:text="Le Voyage Dans la Lun" />
+
         <TextView
             android:id="@+id/director_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Georges Méliès"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="?attr/colorOnPrimary"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/white"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Georges Méliès" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
